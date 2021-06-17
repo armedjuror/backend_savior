@@ -10,23 +10,26 @@ module.exports = async (req, res) => {
         .json({ message: "both Email & Password are required" });
     }
     let donor = await Donor.findOne({ email: email });
-    if(donor===null){
-        return res.status(404).json({ message: "No User Found with the given email" });
+    if(donor){
+      if(password===donor.password){
+        let token = {
+          name: donor.name,
+          email: donor.email,
+          phone: donor.phone,
+        };
+        return res.status(200).json({ token });
+      }
+      else{
+        return res.status(401).json({ message: "wrong password" });
+      }
     }
-    let isPasswordValid = await compare(password, donor.password);
-
-    if (!isPasswordValid) {
-      return res.status(401).json({ message: "wrong password" });
+    else{
+      return res.status(404).json({ message: "No User Found with the given email" });
     }
-
-    let token = {
-      userType: "donor",
-      name: student.name,
-      email: student.email,
-      phone: student.phone,
-    };
-    return res.status(200).json({ token });
-  } catch (err) {
-    console.log("error in logging in");
+  }catch (err) {
+    console.log(
+      `err creating token for donor `,
+      err
+    );
   }
 };

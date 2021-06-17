@@ -11,4 +11,7 @@ router.post('/registerDonor',require('./donorSignup'));
 router.get('/studentLogin', require('./studentLogin'));
 router.get('/donorLogin', require('./donorLogin'));
 
+router.get('/parentDetails',require('./parentProfile'));
+router.get('/studentDashboard',require('./studentDashboard'));
+
 module.exports = router;

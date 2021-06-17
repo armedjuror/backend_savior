@@ -20,7 +20,9 @@ let studentSchema = new mongoose.Schema({
     aim: String,
     requirements: String,
     email: String,
-    password: String
+    password: String,
+    parent_id: String,
+    message: []
 });
 
 module.exports = mongoose.model('student', studentSchema);

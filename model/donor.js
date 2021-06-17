@@ -12,7 +12,8 @@ let donorSchema = new mongoose.Schema({
     organisation: String,
     email: String,
     password: String,
-    adoptionCount: Number
+    adoptionCount: Number,
+    student_id: String
 });
 
 module.exports = mongoose.model('donor', donorSchema);
