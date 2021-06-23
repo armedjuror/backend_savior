@@ -13,5 +13,14 @@ router.get('/donorLogin', require('./donorLogin'));
 
 router.get('/parentDetails',require('./parentProfile'));
 router.get('/studentDashboard',require('./studentDashboard'));
+router.post('/submitMarks',require('./submitMarks'));
+
+router.post('/addNews',require('./addNews'));
+router.get('/getNews',require('./news'));
+
+router.get('/donorDashboard',require('./donorDashboard'));
+router.get('/donorFeed',require('./donorFeed'));
+router.get('/adoptedStudents',require('./getAdoptedStudents'));
+router.get('/studentProfile',require('./studentProfile'));
 
 module.exports = router;

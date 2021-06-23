@@ -19,7 +19,8 @@ module.exports = async (req, res) => {
         'organisation': payload.organisation,
         'email': payload.email,
         'password': payload.password,
-        'adoptionCount': 0
+        'adoptionCount': 0,
+        'browniePoints': 0
     }
     
     let DonorRegistry = new Donor(donorEntry);
