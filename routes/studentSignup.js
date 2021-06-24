@@ -34,21 +34,9 @@ module.exports = async (req, res) => {
     
     StudentRegistry.save(async (registerErr, result) => {
         if(registerErr) {
-            return res.status(500).send({message: 'Some glitch in adding the student. Please try after sometime'})
+            return res.status(500).send({message: 'Some glitch in adding the student. Please try after sometime'});
         }else{
-            let token = {
-                userType: "student",
-                grade: payload.grade,
-                name: payload.name,
-                city: payload.city,
-                email: payload.email,
-                phone: payload.phone,
-              };
-              return res.status(200).send({
-                id:result._id,
-                message: 'Student added successfully',
-                token: token
-            })
+              return res.status(200).send({message: 'Student added successfully'});
         }
     });
 }

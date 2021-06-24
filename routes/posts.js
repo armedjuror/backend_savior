@@ -12,6 +12,9 @@ router.get('/studentLogin', require('./studentLogin'));
 router.get('/donorLogin', require('./donorLogin'));
 
 router.get('/parentDetails',require('./parentProfile'));
+router.post('/messageDonor',require('./messageDonor'));
+router.get('getChat',require('./chat'));
+
 router.get('/studentDashboard',require('./studentDashboard'));
 router.post('/submitMarks',require('./submitMarks'));
 

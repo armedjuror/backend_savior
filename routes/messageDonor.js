@@ -13,9 +13,9 @@ module.exports = async (req, res) => {
       const messageEntry = {
         'date': payload.date,
         'time': payload.time,
-        'studentId': payload.student._id,
-        'donorId': payload.donor._id,
-        'sender': payload.student._id,
+        'studentId': student._id,
+        'donorId': donor._id,
+        'sender': student._id,
         'message': payload.message
       }
       

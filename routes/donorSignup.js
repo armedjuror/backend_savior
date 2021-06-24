@@ -27,20 +27,9 @@ module.exports = async (req, res) => {
     
     DonorRegistry.save(async (registerErr, result) => {
         if(registerErr) {
-            return res.status(500).send({message: 'Some glitch in adding the donor. Please try after sometime'})
+            return res.status(500).send({message: 'Some glitch in adding the donor. Please try after sometime'});
         }else{
-            let token = {
-                userType: "donor",
-                name: payload.name,
-                city: payload.city,
-                email: payload.email,
-                phone: payload.phone,
-              };
-              return res.status(200).send({
-                id: result._id,
-                message: 'donor added successfully',
-                token: token
-            })
+              return res.status(200).send({message: 'donor added successfully'});
         }
     });
 }
