@@ -4,8 +4,8 @@ const Message = require("../model/message");
 
 module.exports = async (req, res) => {
     try {
-      let sEmail = req.headers.studentEmail;
-      let dEmail = req.headers.donorEmail;
+      let sEmail = req.headers.email;
+      let dEmail = req.headers.demail;
       let student = await Student.findOne({ email: sEmail });
       let donor = await Donor.findOne({ email: dEmail });
       let payload = req.body;

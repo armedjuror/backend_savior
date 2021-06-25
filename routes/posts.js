@@ -21,6 +21,7 @@ router.get('getChat',require('./chat'));
 
 router.get('/studentDashboard',require('./studentDashboard'));
 router.post('/submitMarks',require('./submitMarks'));
+router.get('/getMarks',require('./getMarks'));
 
 router.post('/addNews',require('./addNews'));
 router.get('/getNews',require('./news'));
@@ -30,8 +31,9 @@ router.get('/donorFeed',require('./donorFeed'));
 router.get('/adoptedStudents',require('./getAdoptedStudents'));
 router.get('/studentProfile',require('./studentProfile'));
 
-router.post('/payment', require('./payment'));
-router.post('/verification', require('./paymentVerification'));
+//router.post('/payment', require('./payment'));
+//router.post('/verification', require('./paymentVerification'));
+router.get('/addStudent',require('./addStudent'));
 
 //index.html is temporary, connect with frontend
 router.get('/upload', (req,res) => {
