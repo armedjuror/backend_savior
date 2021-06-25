@@ -26,4 +26,7 @@ router.get('/donorFeed',require('./donorFeed'));
 router.get('/adoptedStudents',require('./getAdoptedStudents'));
 router.get('/studentProfile',require('./studentProfile'));
 
+router.post('/payment', require('./payment'));
+router.post('/verification', require('./paymentVerification'));
+
 module.exports = router;
