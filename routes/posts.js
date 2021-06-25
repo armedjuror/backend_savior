@@ -1,5 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const upload = multer({
+    dest: 'uploads/'
+});
 
 router.get('/',(req,res)=>{
     res.send('we are on home');
@@ -28,5 +32,14 @@ router.get('/studentProfile',require('./studentProfile'));
 
 router.post('/payment', require('./payment'));
 router.post('/verification', require('./paymentVerification'));
+
+//index.html is temporary, connect with frontend
+router.get('/upload', (req,res) => {
+    res.sendFile(path.join(__dirname, '/index.html'));
+})
+
+router.post('/upload', upload.single('file_uploaded'), (req,res) => {
+    res.redirect('/');
+})
 
 module.exports = router;
