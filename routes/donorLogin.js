@@ -1,4 +1,6 @@
 const Donor = require("../model/donor");
+const Authentication = require("../auth");
+const authentication = new Authentication();
 
 module.exports = async (req, res) => {
   try {
@@ -12,11 +14,15 @@ module.exports = async (req, res) => {
     let donor = await Donor.findOne({ email: email });
     if(donor){
       if(password===donor.password){
-        let token = {
+        let payloadToCreateToken = {
+          userType: "donor",
+          id: donor._id,
           name: donor.name,
           email: donor.email,
           phone: donor.phone,
         };
+        let token = authentication.createToken(payloadToCreateToken);
+        
         return res.status(200).json({ token });
       }
       else{

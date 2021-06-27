@@ -7,6 +7,9 @@ const cors = require('cors');
 const app=express();
 require('dotenv/config');
 
+//client id: 294198125435-ar7kbgpfhi93ht06838p6puvqo16hcuq.apps.googleusercontent.com
+//client secret: XTqBwrT5Et51aVQk2bATuI09
+//api key: AIzaSyCuvstYlIKbhfvdKSSqJR5KUBVJvO1SbWM
 
 app.use(cors());
 app.use(function (_, res, next) {
