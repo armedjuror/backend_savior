@@ -1,4 +1,6 @@
 const Donor = require('../model/donor');
+const Auth = require('../auth');
+const auth = new Auth()
 
 module.exports = async (req, res) => {
     let payload = req.body;
@@ -29,7 +31,19 @@ module.exports = async (req, res) => {
         if(registerErr) {
             return res.status(500).send({message: 'Some glitch in adding the donor. Please try after sometime'});
         }else{
-              return res.status(200).send({message: 'donor added successfully'});
+            let payloadToCreateToken = {
+                userType: "donor",
+                id: DonorRegistry._id,
+                name: payload.name,
+                email: payload.email,
+                phone: payload.phone,
+              };
+              let token = auth.createToken(payloadToCreateToken)
+              return res.status(200).send({
+                  id: result._id,
+                  message: 'donor added successfully',
+                  token: token
+                });
         }
     });
 }

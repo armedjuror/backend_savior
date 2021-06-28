@@ -1,4 +1,6 @@
 const Student = require('../model/student');
+const Auth = require('../auth');
+const auth = new Auth()
 
 module.exports = async (req, res) => {
     let payload = req.body;
@@ -36,7 +38,20 @@ module.exports = async (req, res) => {
         if(registerErr) {
             return res.status(500).send({message: 'Some glitch in adding the student. Please try after sometime'});
         }else{
-              return res.status(200).send({message: 'Student added successfully'});
+            let payloadToCreateToken = {
+                userType: "student",
+                id: UserRegistry._id,
+                grade: payload.grade,
+                name: payload.name,
+                email: payload.email,
+                phone: payload.phone,
+              };
+              let token = auth.createToken(payloadToCreateToken)
+              return res.status(200).send({
+                  id: result._id,
+                  message: 'Student added successfully',
+                  token: token
+                });
         }
     });
 }

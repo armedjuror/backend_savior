@@ -1,4 +1,6 @@
 const Student = require("../model/student");
+const Authentication = require("../auth");
+const authentication = new Authentication();
 
 module.exports = async (req, res) => {
   try {
@@ -12,11 +14,16 @@ module.exports = async (req, res) => {
     let student = await Student.findOne({ email: email });
     if(student){
       if(password===student.password){
-        let token = {
+        let payloadToCreateToken = {
+          userType: "student",
+          id: student._id,
+          grade: student.grade,
           name: student.name,
           email: student.email,
           phone: student.phone,
         };
+        let token = authentication.createToken(payloadToCreateToken);
+        
         return res.status(200).json({ token });
       }
       else{
