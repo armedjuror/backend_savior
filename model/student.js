@@ -21,7 +21,8 @@ let studentSchema = new mongoose.Schema({
     requirements: String,
     email: String,
     password: String,
-    parent_id: String
+    parent_id: String,
+    photo : String
 });
 
 module.exports = mongoose.model('student', studentSchema);

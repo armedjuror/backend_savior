@@ -32,6 +32,7 @@ module.exports = async (req, res) => {
                 aim: student.aim,
                 requirements: student.requirements,
                 email: student.email,
+                photo: student.photo,
             });
         }
         else{
